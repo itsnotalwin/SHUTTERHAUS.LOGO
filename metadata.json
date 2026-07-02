@@ -1,0 +1,6 @@
+{
+  "name": "Shutterhaus",
+  "description": "Aesthetic Brand Logo Generator with oatmeal and cocoa custom palettes, typography controls, and real-time interactive vector drawing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-cinzel: "Georgia", serif;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+:root {
+  /* Base App Colors */
+  --app-bg: #0a0a0a;
+  
+  /* Light Mode Palette */
+  --light-bg: #faf6f0;
+  --light-fg: #272421;
+  --light-border: #e6dac6;
+  
+  /* Dark Mode Palette */
+  --dark-bg: #121110;
+  --dark-surface: #1a1817;
+  --dark-surface-border: #242120;
+  --dark-fg: #fcfaf7;
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--dark-fg);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1, .font-cinzel {
+  font-family: 'Georgia', serif;
+}
+
+/* Generator Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.generated-card {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.svg-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.svg-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.svg-wrapper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.btn-action {
+  transition: all 0.2s ease-in-out;
+}
+.btn-action:hover {
+  transform: translateY(-2px);
+}
+.btn-action:active {
+  transform: translateY(0);
+}
+
+/* Custom Scrollbar for elegance */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--app-bg); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* Draggable Editor Styles */
+.draggable-group {
+  cursor: grab;
+  user-select: none;
+}
+.draggable-group:active {
+  cursor: grabbing;
+}
+
