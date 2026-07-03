@@ -82,6 +82,81 @@ const icons: IconDef[] = [
         <circle cx="540" cy="460" r="8" fill={fg} stroke="none" />
       </g>
     )
+  },
+  {
+    name: "Abstract Iris",
+    render: (fg: string) => (
+      <g className="draggable-group" stroke={fg} strokeWidth="8" fill="none">
+        <ellipse cx="540" cy="460" rx="180" ry="80" transform="rotate(0 540 460)" />
+        <ellipse cx="540" cy="460" rx="180" ry="80" transform="rotate(60 540 460)" />
+        <ellipse cx="540" cy="460" rx="180" ry="80" transform="rotate(120 540 460)" />
+        <circle cx="540" cy="460" r="40" fill={fg} />
+      </g>
+    )
+  },
+  {
+    name: "Prism Triangle",
+    render: (fg: string) => (
+      <g className="draggable-group" stroke={fg} strokeWidth="12" fill="none" strokeLinejoin="round">
+        <polygon points="540,260 340,600 740,600" />
+        <polygon points="540,320 400,560 680,560" />
+        <line x1="540" y1="260" x2="540" y2="320" />
+        <line x1="340" y1="600" x2="400" y2="560" />
+        <line x1="740" y1="600" x2="680" y2="560" />
+        <circle cx="540" cy="460" r="16" fill={fg} stroke="none" />
+      </g>
+    )
+  },
+  {
+    name: "Minimalist Hexagon",
+    render: (fg: string) => (
+      <g className="draggable-group" stroke={fg} strokeWidth="14" fill="none" strokeLinejoin="miter">
+        <polygon points="540,280 695.88,370 695.88,550 540,640 384.12,550 384.12,370" />
+        <circle cx="540" cy="460" r="60" />
+        <line x1="540" y1="280" x2="540" y2="400" />
+        <line x1="695.88" y1="370" x2="592" y2="430" />
+        <line x1="695.88" y1="550" x2="592" y2="490" />
+        <line x1="540" y1="640" x2="540" y2="520" />
+        <line x1="384.12" y1="550" x2="488" y2="490" />
+        <line x1="384.12" y1="370" x2="488" y2="430" />
+      </g>
+    )
+  },
+  {
+    name: "Cinematic Ratio",
+    render: (fg: string) => (
+      <g className="draggable-group" stroke={fg} strokeWidth="12" fill="none">
+        <rect x="300" y="340" width="480" height="240" />
+        <line x1="300" y1="460" x2="780" y2="460" strokeDasharray="20 20" />
+        <circle cx="540" cy="460" r="50" />
+        <rect x="320" y="360" width="20" height="20" fill={fg} stroke="none" />
+        <rect x="740" y="540" width="20" height="20" fill={fg} stroke="none" />
+      </g>
+    )
+  },
+  {
+    name: "Golden Spiral",
+    render: (fg: string) => (
+      <g className="draggable-group" stroke={fg} strokeWidth="8" fill="none">
+        <circle cx="540" cy="460" r="160" />
+        <circle cx="540" cy="420" r="120" />
+        <circle cx="540" cy="390" r="90" />
+        <circle cx="540" cy="370" r="70" />
+        <circle cx="540" cy="355" r="55" />
+        <circle cx="540" cy="345" r="45" />
+        <circle cx="540" cy="338" r="38" fill={fg} stroke="none" />
+      </g>
+    )
+  },
+  {
+    name: "Shutter Star",
+    render: (fg: string) => (
+      <g className="draggable-group" stroke={fg} strokeWidth="10" fill="none" strokeLinecap="round">
+        <circle cx="540" cy="460" r="140" />
+        <path d="M540 320 L570 430 L680 460 L570 490 L540 600 L510 490 L400 460 L510 430 Z" />
+        <circle cx="540" cy="460" r="10" fill={fg} stroke="none" />
+      </g>
+    )
   }
 ];
 
@@ -266,16 +341,25 @@ const LogoCard: React.FC<LogoCardProps> = ({ concept, index, icon, layout, isFav
     const bgRect = svgElement.querySelector('.svg-bg') as SVGElement | null;
     if (concept.transparent && bgRect) bgRect.style.display = 'none';
     
+    // Temporarily scale SVG for high-quality rasterization (4K)
+    const originalWidth = svgElement.getAttribute('width');
+    const originalHeight = svgElement.getAttribute('height');
+    svgElement.setAttribute('width', '4320');
+    svgElement.setAttribute('height', '4320');
+
     const canvas = document.createElement("canvas");
-    canvas.width = 1080;
-    canvas.height = 1080;
+    canvas.width = 4320;
+    canvas.height = 4320;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const serializer = new XMLSerializer();
     const svgString = serializer.serializeToString(svgElement);
     
-    if (concept.transparent && bgRect) bgRect.style.display = ''; // Restore UI
+    // Restore original dimensions and UI
+    if (originalWidth) svgElement.setAttribute('width', originalWidth);
+    if (originalHeight) svgElement.setAttribute('height', originalHeight);
+    if (concept.transparent && bgRect) bgRect.style.display = '';
     
     const svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(svgBlob);
@@ -286,8 +370,8 @@ const LogoCard: React.FC<LogoCardProps> = ({ concept, index, icon, layout, isFav
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       URL.revokeObjectURL(url);
       
-      const pngUrl = canvas.toDataURL("image/png");
-      triggerDownload(pngUrl, `Shutterhaus_Image_${index + 1}.png`);
+      const pngUrl = canvas.toDataURL("image/png", 1.0);
+      triggerDownload(pngUrl, `Shutterhaus_4K_Image_${index + 1}.png`);
     };
     
     img.src = url;
@@ -376,26 +460,33 @@ const LogoCard: React.FC<LogoCardProps> = ({ concept, index, icon, layout, isFav
         </label>
 
         <button 
-          onClick={handleDownloadSVG} 
-          className="btn-action w-full py-2.5 text-[9px] font-bold tracking-widest uppercase rounded flex items-center justify-center gap-1.5 cursor-pointer font-sans"
+          onClick={() => { handleDownloadSVG(); handleDownloadPNG(); }} 
+          className="btn-action w-full py-2.5 text-[10px] font-bold tracking-widest uppercase rounded flex items-center justify-center gap-1.5 cursor-pointer font-sans"
           style={{ backgroundColor: theme.fg, color: theme.bg }}
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          Save SVG
+          Deploy Logo
         </button>
 
-        <button 
-          onClick={handleDownloadPNG} 
-          className="btn-action w-full py-2.5 text-[9px] font-bold tracking-widest uppercase rounded border flex items-center justify-center gap-1.5 cursor-pointer font-sans"
-          style={{ borderColor: theme.fg, color: theme.fg, backgroundColor: 'transparent' }}
-        >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-          Save PNG
-        </button>
+        <div className="flex gap-2">
+          <button 
+            onClick={handleDownloadSVG} 
+            className="btn-action w-full py-2 text-[8px] font-bold tracking-widest uppercase rounded border flex items-center justify-center gap-1.5 cursor-pointer font-sans transition-colors"
+            style={{ borderColor: theme.fg, color: theme.fg, backgroundColor: 'transparent' }}
+          >
+            Export SVG
+          </button>
+
+          <button 
+            onClick={handleDownloadPNG} 
+            className="btn-action w-full py-2 text-[8px] font-bold tracking-widest uppercase rounded border flex items-center justify-center gap-1.5 cursor-pointer font-sans transition-colors"
+            style={{ borderColor: theme.fg, color: theme.fg, backgroundColor: 'transparent' }}
+          >
+            Export 4K PNG
+          </button>
+        </div>
       </div>
     </motion.div>
   );
@@ -424,21 +515,29 @@ export default function App() {
     }
   }, [favorites]);
 
-  // Generator of 6 designs (Alternating Dark and Light)
+  // Generator of 12 designs (6 unique concepts, each in Dark and Light mode)
   const generateLogos = () => {
     const list: LogoConcept[] = [];
     const runId = Math.floor(Math.random() * 1000000);
     for (let i = 0; i < 6; i++) {
-      const isDark = i % 2 === 0;
-      const theme = isDark ? palettes.dark : palettes.light;
-      
       const rIconIndex = Math.floor(Math.random() * icons.length);
       const rLayoutIndex = Math.floor(Math.random() * layouts.length);
       const rFont = pickRandom(fontOptions);
       
+      // Dark Version
       list.push({
-        id: `generated-svg-${i}-${runId}`,
-        palette: theme,
+        id: `generated-svg-dark-${i}-${runId}`,
+        palette: palettes.dark,
+        iconIndex: rIconIndex,
+        layoutIndex: rLayoutIndex,
+        fontMain: rFont,
+        transparent: false
+      });
+      
+      // Light Version
+      list.push({
+        id: `generated-svg-light-${i}-${runId}`,
+        palette: palettes.light,
         iconIndex: rIconIndex,
         layoutIndex: rLayoutIndex,
         fontMain: rFont,
