@@ -167,13 +167,13 @@ const layouts: LayoutDef[] = [
     render: (fontStyle: string, fg: string) => (
       <>
         <g className="draggable-group">
-          <text x="546" y="800" textAnchor="middle" fontFamily={fontStyle === 'Cinzel' ? 'Georgia, serif' : 'Helvetica Neue, Helvetica, Arial, sans-serif'} fontSize="82" fontWeight="600" fill={fg} letterSpacing="14">SHUTTERHAUS</text>
+          <text x="546" y="560" textAnchor="middle" fontFamily={fontStyle === 'Cinzel' ? 'Georgia, serif' : 'Helvetica Neue, Helvetica, Arial, sans-serif'} fontSize="82" fontWeight="600" fill={fg} letterSpacing="14">SHUTTERHAUS</text>
         </g>
         <g className="draggable-group">
-          <text x="557" y="880" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="28" fontWeight="300" fill={fg} letterSpacing="34">VISUALS</text>
+          <text x="557" y="640" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="28" fontWeight="300" fill={fg} letterSpacing="34">VISUALS</text>
         </g>
         <g className="draggable-group">
-          <text x="546" y="980" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="16" fontWeight="300" fill={fg} letterSpacing="8" opacity="0.5">@ITSNOTALWIN</text>
+          <text x="546" y="740" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="16" fontWeight="300" fill={fg} letterSpacing="8" opacity="0.5">@ITSNOTALWIN</text>
         </g>
       </>
     )
@@ -183,13 +183,13 @@ const layouts: LayoutDef[] = [
     render: (fontStyle: string, fg: string) => (
       <>
         <g className="draggable-group">
-          <text x="546" y="830" textAnchor="middle" fontFamily={fontStyle === 'Cinzel' ? 'Georgia, serif' : 'Helvetica Neue, Helvetica, Arial, sans-serif'} fontSize="96" fontWeight="700" fill={fg} letterSpacing="18">SHUTTERHAUS</text>
+          <text x="546" y="590" textAnchor="middle" fontFamily={fontStyle === 'Cinzel' ? 'Georgia, serif' : 'Helvetica Neue, Helvetica, Arial, sans-serif'} fontSize="96" fontWeight="700" fill={fg} letterSpacing="18">SHUTTERHAUS</text>
         </g>
         <g className="draggable-group">
           <line x1="380" y1="890" x2="700" y2="890" stroke={fg} strokeWidth="2" opacity="0.3" />
         </g>
         <g className="draggable-group">
-          <text x="552" y="960" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="22" fontWeight="400" fill={fg} letterSpacing="24">VISUALS</text>
+          <text x="552" y="680" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="22" fontWeight="400" fill={fg} letterSpacing="24">VISUALS</text>
         </g>
       </>
     )
@@ -199,14 +199,14 @@ const layouts: LayoutDef[] = [
     render: (fontStyle: string, fg: string) => (
       <>
         <g className="draggable-group">
-          <text x="546" y="780" textAnchor="middle" fontFamily={fontStyle === 'Cinzel' ? 'Georgia, serif' : 'Helvetica Neue, Helvetica, Arial, sans-serif'} fontSize="70" fontWeight="500" fill={fg} letterSpacing="20">SHUTTERHAUS</text>
+          <text x="546" y="540" textAnchor="middle" fontFamily={fontStyle === 'Cinzel' ? 'Georgia, serif' : 'Helvetica Neue, Helvetica, Arial, sans-serif'} fontSize="70" fontWeight="500" fill={fg} letterSpacing="20">SHUTTERHAUS</text>
         </g>
         <g className="draggable-group">
-          <text x="554" y="840" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="20" fontWeight="300" fill={fg} letterSpacing="20">VISUALS</text>
+          <text x="554" y="600" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="20" fontWeight="300" fill={fg} letterSpacing="20">VISUALS</text>
         </g>
         <g className="draggable-group">
           {/* Border box framing the text */}
-          <rect x="240" y="700" width="600" height="180" fill="none" stroke={fg} strokeWidth="2" opacity="0.2" />
+          <rect x="240" y="440" width="600" height="180" fill="none" stroke={fg} strokeWidth="2" opacity="0.2" />
         </g>
       </>
     )
