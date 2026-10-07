@@ -575,7 +575,7 @@ export default function App() {
   };
 
   return (
-      <div className="min-h-screen p-8 flex flex-col items-center selection:bg-[#e6e6e6] selection:text-[#111] bg-white text-[#111]">
+      <div className="min-h-screen p-8 flex flex-col items-center justify-center selection:bg-[#e6e6e6] selection:text-[#111] bg-white text-[#111]">
       <header className="text-center max-w-2xl mb-8 flex flex-col items-center">
         <motion.h1 
           initial={{ opacity: 0, y: -10 }}
