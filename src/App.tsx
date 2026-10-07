@@ -594,8 +594,6 @@ export default function App() {
         >
           Logo Maker
         </motion.p>
-          Aesthetic Brand Generator
-        </motion.h2>
         
         <motion.p 
           initial={{ opacity: 0 }}
