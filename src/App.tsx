@@ -7,8 +7,8 @@ import { Palette, IconDef, LayoutDef, LogoConcept } from './types';
 
 // 1. Color Palettes
 const palettes: { dark: Palette; light: Palette } = {
-  dark: { id: 'dark', bg: '#121110', fg: '#fcfaf7', cardBg: '#1a1817', cardBorder: '#242120', name: 'Dark Mode', desc: 'Cocoa & Alabaster' },
-  light: { id: 'light', bg: '#faf6f0', fg: '#272421', cardBg: '#faf6f0', cardBorder: '#e6dac6', name: 'Light Mode', desc: 'Oatmeal & Espresso' }
+  dark: { id: 'dark', bg: '#111', fg: '#fff', cardBg: '#1a1a1a', cardBorder: '#333', name: 'Dark Mode', desc: 'Ink & Alabaster' },
+  light: { id: 'light', bg: '#fff', fg: '#111', cardBg: '#fff', cardBorder: '#e6e6e6', name: 'Light Mode', desc: 'Paper & Ink' }
 };
 
 // 2. Icon Paths & SVGs (Centered at 540,460)
@@ -454,7 +454,7 @@ const LogoCard: React.FC<LogoCardProps> = ({ concept, index, icon, layout, isFav
             type="checkbox" 
             checked={concept.transparent}
             onChange={(e) => onTransparentToggle(concept.id, e.target.checked)}
-            className="cursor-pointer w-3 h-3 rounded border-gray-300 accent-[#e6dac6] focus:ring-0" 
+            className="cursor-pointer w-3 h-3 rounded border-gray-300 accent-[#111] focus:ring-0" 
           />
           Transparent Background
         </label>
@@ -576,13 +576,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen p-8 flex flex-col items-center selection:bg-[#e6dac6] selection:text-[#121110] bg-[#0a0a0a] text-[#fcfaf7]">
+      <div className="min-h-screen p-8 flex flex-col items-center selection:bg-[#e6e6e6] selection:text-[#111] bg-white text-[#111]">
       <header className="text-center max-w-2xl mb-8 flex flex-col items-center">
         <motion.h1 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold font-cinzel mb-2 uppercase tracking-[0.4em] text-[#fcfaf7]"
+          className="text-4xl font-bold font-cinzel mb-2 uppercase tracking-[0.4em] text-[#111]"
         >
           SHUTTERHAUS
         </motion.h1>
@@ -591,7 +591,7 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-[10px] text-[#e6dac6] tracking-[0.5em] font-light uppercase border-b border-[#e6dac6]/30 pb-3 inline-block font-sans"
+          className="text-[10px] text-[#6b6b6b] tracking-[0.5em] font-light uppercase border-b border-[#e6e6e6] pb-3 inline-block font-sans"
         >
           Aesthetic Brand Generator
         </motion.h2>
@@ -610,7 +610,7 @@ export default function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
-          className="mt-4 px-3 py-1.5 bg-[#e6dac6]/10 border border-[#e6dac6]/20 text-[#e6dac6] rounded text-[9px] tracking-[0.2em] uppercase flex items-center gap-2 font-sans"
+          className="mt-4 px-3 py-1.5 bg-neutral-100 border border-neutral-200 text-[#6b6b6b] rounded text-[9px] tracking-[0.2em] uppercase flex items-center gap-2 font-sans"
         >
           <svg className="w-3 h-3 flex-shrink-0 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
@@ -622,35 +622,35 @@ export default function App() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleGenerateClick} 
-          className="btn-action mt-6 px-6 py-3 bg-[#e6dac6] text-[#121110] font-sans font-bold tracking-widest uppercase text-[10px] rounded shadow-lg cursor-pointer"
+          className="btn-action mt-6 px-6 py-3 bg-[#111] text-white font-sans font-bold tracking-widest uppercase text-[10px] rounded shadow-lg cursor-pointer"
         >
           Generate New Concepts
         </motion.button>
       </header>
 
       {/* Tab Navigation */}
-      <div className="flex gap-8 mb-8 border-b border-[#e6dac6]/15 w-full max-w-6xl justify-center font-sans">
+      <div className="flex gap-8 mb-8 border-b border-neutral-200 w-full max-w-6xl justify-center font-sans">
         <button 
           onClick={() => setActiveTab('discover')}
-          className={`pb-3 text-[10px] tracking-[0.3em] uppercase transition-all relative font-bold cursor-pointer ${activeTab === 'discover' ? 'text-[#e6dac6]' : 'text-gray-500 hover:text-gray-300'}`}
+          className={`pb-3 text-[10px] tracking-[0.3em] uppercase transition-all relative font-bold cursor-pointer ${activeTab === 'discover' ? 'text-[#111]' : 'text-gray-400 hover:text-gray-600'}`}
         >
           Discover
           {activeTab === 'discover' && (
-            <motion.div layoutId="activeTabUnderline" className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#e6dac6]" />
+            <motion.div layoutId="activeTabUnderline" className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#111]" />
           )}
         </button>
         <button 
           onClick={() => setActiveTab('favorites')}
-          className={`pb-3 text-[10px] tracking-[0.3em] uppercase transition-all relative font-bold cursor-pointer flex items-center gap-1.5 ${activeTab === 'favorites' ? 'text-[#e6dac6]' : 'text-gray-500 hover:text-gray-300'}`}
+          className={`pb-3 text-[10px] tracking-[0.3em] uppercase transition-all relative font-bold cursor-pointer flex items-center gap-1.5 ${activeTab === 'favorites' ? 'text-[#111]' : 'text-gray-400 hover:text-gray-600'}`}
         >
           Favorites
           {favorites.length > 0 && (
-            <span className="px-1.5 py-0.5 bg-[#e6dac6] text-[#121110] text-[8px] font-bold rounded-full leading-none">
+            <span className="px-1.5 py-0.5 bg-[#111] text-white text-[8px] font-bold rounded-full leading-none">
               {favorites.length}
             </span>
           )}
           {activeTab === 'favorites' && (
-            <motion.div layoutId="activeTabUnderline" className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#e6dac6]" />
+            <motion.div layoutId="activeTabUnderline" className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#111]" />
           )}
         </button>
       </div>
@@ -692,18 +692,18 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex-1 flex flex-col items-center justify-center text-center p-12 border border-dashed border-[#e6dac6]/20 rounded-xl max-w-xl mx-auto my-8 bg-[#1a1817]/30"
+              className="flex-1 flex flex-col items-center justify-center text-center p-12 border border-dashed border-neutral-200 rounded-xl max-w-xl mx-auto my-8 bg-neutral-50"
             >
-              <Heart className="w-8 h-8 text-[#e6dac6]/40 mb-4 stroke-[1.5]" />
-              <h3 className="text-sm font-bold tracking-widest text-[#e6dac6] uppercase mb-2 font-sans">
-                No Saved Concepts
+              <Heart className="w-8 h-8 text-neutral-300 mb-4 stroke-[1.5]" />
+              <h3 className="text-sm font-bold tracking-widest text-[#111] uppercase mb-2 font-sans">
+                  No Saved Concepts
               </h3>
               <p className="text-xs text-gray-400 font-sans max-w-xs leading-relaxed font-light">
                 Explore the Discover tab and click the heart icon on any design concept to save your bespoke favorites here.
               </p>
               <button 
-                onClick={() => setActiveTab('discover')}
-                className="mt-6 px-4 py-2 bg-[#e6dac6]/10 hover:bg-[#e6dac6]/20 border border-[#e6dac6]/30 text-[#e6dac6] rounded text-[9px] tracking-[0.2em] uppercase cursor-pointer font-sans"
+              onClick={() => setActiveTab('discover')}
+              className="mt-6 px-4 py-2 bg-neutral-100 hover:bg-neutral-200 border border-neutral-200 text-[#111] rounded text-[9px] tracking-[0.2em] uppercase cursor-pointer font-sans"
               >
                 Start Exploring
               </button>
@@ -713,7 +713,7 @@ export default function App() {
       )}
 
       {/* Editorial Aesthetic Footer */}
-      <footer className="w-full text-center py-4 border-t border-[#e6dac6]/10 mt-auto">
+      <footer className="w-full text-center py-4 border-t border-neutral-200 mt-auto">
         <p className="text-[8px] font-sans uppercase tracking-[0.4em] text-gray-500">
           Vector Engine v2.4 • Curated for Visual Excellence
         </p>

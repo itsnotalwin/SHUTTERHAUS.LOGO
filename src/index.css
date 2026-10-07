@@ -8,24 +8,24 @@
 
 :root {
   /* Base App Colors */
-  --app-bg: #0a0a0a;
+  --app-bg: #fff;
   
   /* Light Mode Palette */
-  --light-bg: #faf6f0;
-  --light-fg: #272421;
-  --light-border: #e6dac6;
+  --light-bg: #fff;
+  --light-fg: #111;
+  --light-border: #e6e6e6;
   
   /* Dark Mode Palette */
-  --dark-bg: #121110;
-  --dark-surface: #1a1817;
-  --dark-surface-border: #242120;
-  --dark-fg: #fcfaf7;
+  --dark-bg: #111;
+  --dark-surface: #1a1a1a;
+  --dark-surface-border: #333;
+  --dark-fg: #fff;
 }
 
 body {
   background-color: var(--app-bg);
-  color: var(--dark-fg);
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--light-fg);
+  font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
 h1, .font-cinzel {
