@@ -581,7 +581,7 @@ export default function App() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold font-sans mb-1 uppercase tracking-tight text-[#111]"
+          className="text-3xl font-bold font-sans mb-1 uppercase tracking-tight text-[#111] text-center"
         >
           SHUTTERHAUS VISUALS
         </motion.h1>
@@ -590,7 +590,7 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-[10px] text-[#6b6b6b] tracking-[0.3em] font-light uppercase border-b border-[#e6e6e6] pb-3 inline-block font-sans"
+          className="text-[10px] text-[#6b6b6b] tracking-[0.3em] font-light uppercase border-b border-[#e6e6e6] pb-3 inline-block font-sans text-center"
         >
           Logo Maker
         </motion.p>
@@ -599,7 +599,7 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="mt-4 text-xs font-sans text-gray-400 leading-relaxed max-w-lg font-light"
+          className="mt-4 text-xs font-sans text-gray-400 leading-relaxed max-w-lg font-light text-center"
         >
           Bespoke Ink & Paper logo concepts based on mathematically centered geometric optics.
         </motion.p>
