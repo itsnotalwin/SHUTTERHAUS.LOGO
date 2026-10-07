@@ -1,20 +1,41 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Shutterhaus Visuals | Logo Maker
 
-# Run and deploy your AI Studio app
+A bespoke identity generator designed for Shutterhaus Visuals. This tool creates minimalist, high-contrast logo concepts based on geometric optics and professional typography, aligned with the brand's Ink & Paper aesthetic.
 
-This contains everything you need to run your app locally.
+## 🚀 Features
+- **Minimalist Typography**: Generates high-impact layout concepts focused on the brand name.
+- **Monochrome Palette**: Strictly follows the Ink (#111) and Paper (#fff) theme.
+- **Vector Exports**: Direct export to SVG and 4K PNG for professional use.
+- **Interactive Canvas**: Position-perfect vector outputs for conceptual identity exploration.
 
-View your app in AI Studio: https://ai.studio/apps/022a17bf-362f-4351-afe3-6fa16f2e1557
+## 🛠️ Tech Stack
+- **React 19** & **TypeScript**
+- **Vite** (Build Tool)
+- **Tailwind CSS** (Styling)
+- **Framer Motion** (Animations)
+- **Lucide React** (Icons)
 
-## Run Locally
+## 💻 Local Development
 
-**Prerequisites:**  Node.js
+### Prerequisites
+- Node.js (v20+)
 
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/itsnotalwin/SHUTTERHAUS.LOGO.git
+   cd SHUTTERHAUS.LOGO
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 🌐 Deployment
+This project is automatically deployed to GitHub Pages via GitHub Actions.
