@@ -436,8 +436,7 @@ const LogoCard: React.FC<LogoCardProps> = ({ concept, index, icon, layout, isFav
           {/* Background Base (Ensures correct export) */}
           <rect className="svg-bg" width="1080" height="1080" fill={theme.bg} />
           
-          {/* Geometric Icon */}
-          {icon.render(theme.fg)}
+          {/* Geometric Icon removed to keep only typography as requested */}
           
           {/* Typography Layout */}
           {layout.render(concept.fontMain, theme.fg)}
